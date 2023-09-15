@@ -34,12 +34,12 @@ public class NetServerHandlerMixin {
         newS = newS.replaceAll("&d", TextFormatting.GREEN.toString());
         newS = newS.replaceAll("&e", TextFormatting.RED.toString());
         newS = newS.replaceAll("&f", TextFormatting.BLACK.toString());
-        newS = newS.replaceAll("&g", TextFormatting.OBFUSCATED.toString());
-        newS = newS.replaceAll("&h", TextFormatting.BOLD.toString());
-        newS = newS.replaceAll("&i", TextFormatting.STRIKETHROUGH.toString());
-        newS = newS.replaceAll("&j", TextFormatting.UNDERLINE.toString());
-        newS = newS.replaceAll("&k", TextFormatting.ITALIC.toString());
-        newS = newS.replaceAll("&l", TextFormatting.RESET.toString());
+        newS = newS.replaceAll("&k", TextFormatting.OBFUSCATED.toString());
+        newS = newS.replaceAll("&l", TextFormatting.BOLD.toString());
+        newS = newS.replaceAll("&m", TextFormatting.STRIKETHROUGH.toString());
+        newS = newS.replaceAll("&n", TextFormatting.UNDERLINE.toString());
+        newS = newS.replaceAll("&o", TextFormatting.ITALIC.toString());
+        newS = newS.replaceAll("&r", TextFormatting.RESET.toString());
         return newS;
     }
 }
