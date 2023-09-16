@@ -40,6 +40,6 @@ public class NetServerHandlerMixin {
         newS = newS.replaceAll("&n", TextFormatting.UNDERLINE.toString());
         newS = newS.replaceAll("&o", TextFormatting.ITALIC.toString());
         newS = newS.replaceAll("&r", TextFormatting.RESET.toString());
-        return newS;
+        return newS + TextFormatting.RESET;
     }
 }
