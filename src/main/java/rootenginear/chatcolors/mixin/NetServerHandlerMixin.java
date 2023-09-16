@@ -7,6 +7,8 @@ import org.spongepowered.asm.mixin.Mixin;
 import org.spongepowered.asm.mixin.injection.At;
 import org.spongepowered.asm.mixin.injection.Redirect;
 
+import static net.minecraft.core.net.command.TextFormatting.FORMATTINGS;
+
 @Mixin(value = {NetServerHandler.class}, remap = false)
 public class NetServerHandlerMixin {
     @Redirect(
@@ -18,28 +20,9 @@ public class NetServerHandlerMixin {
     )
     private String formatMsg(String s) {
         String newS = ChatEmotes.process(s);
-        newS = newS.replaceAll("&0", TextFormatting.WHITE.toString());
-        newS = newS.replaceAll("&1", TextFormatting.ORANGE.toString());
-        newS = newS.replaceAll("&2", TextFormatting.MAGENTA.toString());
-        newS = newS.replaceAll("&3", TextFormatting.LIGHT_BLUE.toString());
-        newS = newS.replaceAll("&4", TextFormatting.YELLOW.toString());
-        newS = newS.replaceAll("&5", TextFormatting.LIME.toString());
-        newS = newS.replaceAll("&6", TextFormatting.PINK.toString());
-        newS = newS.replaceAll("&7", TextFormatting.GRAY.toString());
-        newS = newS.replaceAll("&8", TextFormatting.LIGHT_GRAY.toString());
-        newS = newS.replaceAll("&9", TextFormatting.CYAN.toString());
-        newS = newS.replaceAll("&a", TextFormatting.PURPLE.toString());
-        newS = newS.replaceAll("&b", TextFormatting.BLUE.toString());
-        newS = newS.replaceAll("&c", TextFormatting.BROWN.toString());
-        newS = newS.replaceAll("&d", TextFormatting.GREEN.toString());
-        newS = newS.replaceAll("&e", TextFormatting.RED.toString());
-        newS = newS.replaceAll("&f", TextFormatting.BLACK.toString());
-        newS = newS.replaceAll("&k", TextFormatting.OBFUSCATED.toString());
-        newS = newS.replaceAll("&l", TextFormatting.BOLD.toString());
-        newS = newS.replaceAll("&m", TextFormatting.STRIKETHROUGH.toString());
-        newS = newS.replaceAll("&n", TextFormatting.UNDERLINE.toString());
-        newS = newS.replaceAll("&o", TextFormatting.ITALIC.toString());
-        newS = newS.replaceAll("&r", TextFormatting.RESET.toString());
+        for (TextFormatting style : FORMATTINGS) {
+            newS = newS.replaceAll("&" + style.code, style.toString());
+        }
         return newS + TextFormatting.RESET;
     }
 }
